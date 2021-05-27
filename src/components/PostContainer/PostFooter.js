@@ -1,6 +1,7 @@
 import React from "react";
+import { Form } from "react-bootstrap";
+import { BsThreeDots } from "react-icons/bs";
 import { makeStyles } from '@material-ui/core/styles';
-import { BsHeart , BsChat } from "react-icons/bs";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -10,23 +11,20 @@ const useStyles = makeStyles((theme) => ({
       },
       marginLeft : '5px'
     },
-    likes : {
-      float : 'left',
-      marginLeft : '10px'
-    },
+    icon: {
+        marginTop : 'auto' , 
+        marginBottom : 'auto'
+    }
   }));
 
-function PostLikeSection({likes}) {
+function PostFooter() {
     const classes = useStyles();
     return (
-      <div>
         <div className={classes.root}>
-           <BsHeart />
-           <BsChat />
+        <Form.Control type="text" placeholder="Add a comment..."/>
+        <BsThreeDots className={classes.icon}/>
         </div>
-        <h6 className={classes.likes}>{likes} Likes</h6>
-      </div>
     )
 }
 
-export default PostLikeSection;
+export default PostFooter;

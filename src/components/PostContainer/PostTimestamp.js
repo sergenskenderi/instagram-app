@@ -1,5 +1,5 @@
-import './CommentSection.css';
-import React from "react";
+import React from 'react';
+import moment from 'moment';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -8,18 +8,18 @@ const useStyles = makeStyles((theme) => ({
     '& > *': {
       margin: theme.spacing(0.5),
     },
-    marginLeft : '5px'
+    marginLeft : '7px',
+    fontSize : 'small' ,
+    marginBottom : '10px'
   },
 }));
 
-function CommentSection(props) {
+function PostTimestamp({timestamp}) {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-        <h6>{props.comment.username}</h6>
-        <p>{props.comment.text}</p>
+        <p>{moment(timestamp,'hour').fromNow()}</p>
     </div>
   );
 }
-
-export default CommentSection;
+export default PostTimestamp;
