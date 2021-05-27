@@ -1,0 +1,17 @@
+.SearchBar {
+    width: 40%;
+    margin: auto;
+}
+
+.Toolbar {
+    background-color: rgb(245, 243, 243);
+}
+
+.InputTxt{
+    width: 50%;
+    margin: auto;
+}
+
+.NavBarIcon{
+    margin: 10px;
+}
