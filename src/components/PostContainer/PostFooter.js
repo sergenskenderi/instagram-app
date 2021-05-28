@@ -1,4 +1,4 @@
-import React from "react";
+import React , {useState} from "react";
 import { Form } from "react-bootstrap";
 import { BsThreeDots } from "react-icons/bs";
 import { makeStyles } from '@material-ui/core/styles';
@@ -14,15 +14,45 @@ const useStyles = makeStyles((theme) => ({
     icon: {
         marginTop : 'auto' , 
         marginBottom : 'auto'
+    },
+    button : {
+      display : 'none'
     }
   }));
 
-function PostFooter() {
+function PostFooter(props) {
+    const [comment , setComment] = useState("");
+    const {postId,commentPost} = props;
     const classes = useStyles();
+
+    function handleCommentInputChange(e){
+      setComment(e.target.value);
+    }
+  
+    function handleSubmit(e){
+      e.preventDefault();
+      // check if comment is not empty
+      if(comment.trim()){
+          commentPost(postId , comment);
+          //reset comment input
+          setComment("");
+      }
+  }
+
     return (
-        <div className={classes.root}>
-        <Form.Control type="text" placeholder="Add a comment..."/>
+      <div>
+        <form onSubmit={handleSubmit}>
+          <div className={classes.root}>
+        <Form.Control 
+            type="text" 
+            placeholder="Add a comment..."
+            onChange={handleCommentInputChange}
+            value = {comment}
+            />
         <BsThreeDots className={classes.icon}/>
+        </div>
+        <button type="submit" className={classes.button}/>
+        </form>
         </div>
     )
 }

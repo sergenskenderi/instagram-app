@@ -73,7 +73,7 @@ const dummyData = [
       imageUrl:
         "https://tk-assets.lambdaschool.com/43bf01f9-319c-469d-8cf5-0120fe1007f1_yosemite.jpg",
       likes: 5306,
-      timestamp: "July 14th 2017, 10:04:08 am",
+      timestamp: "May 14th 2021, 10:04:08 am",
       comments: [
         {
           id: 1,

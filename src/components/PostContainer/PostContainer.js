@@ -19,7 +19,7 @@ function PostContainer(props) {
               })}
         <PostTimestamp timestamp={props.post.timestamp} />
         <Card.Footer>
-          <PostFooter />
+          <PostFooter postId={props.post.id} commentPost={props.commentPost} />
         </Card.Footer>
       </Card>
     </div>
@@ -39,6 +39,7 @@ PostContainer.propTypes = {
     }),
   ),
   timestamp : PropTypes.string,
+  postId : PropTypes.number ,
 }
 
 export default PostContainer;

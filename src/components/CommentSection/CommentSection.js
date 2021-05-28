@@ -10,6 +10,10 @@ const useStyles = makeStyles((theme) => ({
     },
     marginLeft : '5px'
   },
+  txt: {
+    marginTop : 'auto',
+    marginBottom : 'auto'
+  }
 }));
 
 function CommentSection(props) {
@@ -17,7 +21,7 @@ function CommentSection(props) {
   return (
     <div className={classes.root}>
         <h6>{props.comment.username}</h6>
-        <p>{props.comment.text}</p>
+        <p className={classes.txt}>{props.comment.text}</p>
     </div>
   );
 }
