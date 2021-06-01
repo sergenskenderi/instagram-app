@@ -19,8 +19,8 @@ const useStyles = makeStyles((theme) => ({
 function PostLikeSection({likes , likePost , postId , liked}) {
     const classes = useStyles();
 
-    const clickLike = (event) =>{
-      likePost(event,postId);
+    const clickLike = () =>{
+      likePost(postId);
     };
 
     return (

@@ -14,7 +14,7 @@ function PostContainer(props) {
         <Card.Header><PostHeader image={props.post.thumbnailUrl} username={props.post.username} /></Card.Header>
         <Card.Img variant="top" src={props.post.imageUrl} />
         <PostLikeSection likes={props.post.likes} likePost={props.likePost} postId={props.post.id} liked={props.post.liked}/>
-         <CommentSection comments={props.post.comments}/>
+         <CommentSection comments={props.post.comments} removeComment={props.removeComment} postId={props.post.id}/>
         <PostTimestamp timestamp={props.post.timestamp} />
         <Card.Footer>
           <PostFooter postId={props.post.id} addNewComment={props.addNewComment} />
