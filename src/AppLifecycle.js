@@ -5,7 +5,8 @@ import dummyData from "./dummy-data";
 
 class AppLifecycle extends React.Component{
     state = {
-        posts : []
+        posts : [],
+        error : ""
     }
 
     constructor(){
@@ -22,15 +23,23 @@ class AppLifecycle extends React.Component{
     }
 
     searchPost(event){
-       const pst =  this.state.posts.map( (post) => {
+        const pst = [];
+        // eslint-disable-next-line
+        this.state.posts.map( (post) => {
             if(event.target[0].value === post.username){
-                return post;
+                pst.push(post);
             }
         });
-
+        if(pst.length > 0){
         this.setState({
             posts : pst
         })
+        }else{
+            this.setState({
+                posts : [],
+                error : "No User Found"
+            })
+        }
         
     }
 
@@ -75,12 +84,12 @@ class AppLifecycle extends React.Component{
     }
 
 
-
     render () {
         return (
             <div className="App">
             <SearchBar searchPost={this.searchPost}/>
             {/* Call Post Container for each data from dummyData */}
+            {this.state.error && <h6 style={{marginTop : '100px'}}>{this.state.error}</h6>}
             {this.state.posts.map( (post) => {
                 return <PostContainer key={post.id} post={post} addNewComment={this.addNewComment} likePost={this.likePost}/>
             })}

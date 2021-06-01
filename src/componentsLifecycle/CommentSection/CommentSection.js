@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function CommentSection(props) {
-  const [comments , setComments] = useState(props.comments)
+  const [comments] = useState(props.comments)
   const classes = useStyles();
   return (
     <div >

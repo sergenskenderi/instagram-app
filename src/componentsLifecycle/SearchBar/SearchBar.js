@@ -30,7 +30,7 @@ function SearchBar({searchPost}){
         width="40"
         height="40"
         />
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="FormTxt">
         <Form.Control type="text" placeholder="Search" className="InputTxt"
         onChange={handleSearchInputChange}
         value = {search}/>
