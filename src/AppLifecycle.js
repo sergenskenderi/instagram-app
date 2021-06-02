@@ -2,13 +2,15 @@ import React from "react";
 import PostContainer from "./componentsLifecycle/PostContainer/PostContainer";
 import SearchBar from "./componentsLifecycle/SearchBar/SearchBar";
 import dummyData from "./dummy-data";
+// import Fuse from "fuse.js";
+
 
 class AppLifecycle extends React.Component{
     state = {
         posts : [],
         allPosts : [],
         error : "",
-        searchTxt : ""
+        searchTxt : "",
     }
 
     constructor(){
@@ -17,6 +19,7 @@ class AppLifecycle extends React.Component{
         this.likePost = this.likePost.bind(this);
         this.searchPost = this.searchPost.bind(this);
         this.removeComment = this.removeComment.bind(this);
+        // this.searchFusePost = this.searchFusePost.bind(this);
     }
 
     componentDidMount() {
@@ -34,7 +37,7 @@ class AppLifecycle extends React.Component{
         }
     }
 
-    searchPost(event){
+    searchPost(event){        
         if(event.target[0].value === "all"){
             this.setState({
                 searchTxt : 'all'
@@ -60,6 +63,21 @@ class AppLifecycle extends React.Component{
             }
         }
     }
+
+    // searchFusePost(event){
+    //     const options = {
+    //         shouldSort: true,
+    //         threshold: 0.1,
+    //         location: 0,
+    //         distance: 100,
+    //         keys: [
+    //           'username'
+    //         ]
+    //       };
+    //     const fuse = new Fuse(this.state.allPosts , options);
+
+    //     const result = fuse.search(event.target.value);
+    // }
 
     addNewComment(event,postId) { 
         const pst = this.state.posts.map( (post) => {
@@ -87,19 +105,21 @@ class AppLifecycle extends React.Component{
     removeComment(commentId,postId){
         const pst = this.state.posts.map( (post) => {
             if(post.id === postId){
-                const commentList = post.comments.filter( (item) => item.id !== commentId );
-                post.comments = commentList;
+                var elementPos = post.comments.map(function(x) {return x.id; }).indexOf(commentId);
+                if(elementPos !== -1){
+                    post.comments.splice(elementPos,1);
+                }
             }
             return post;
-        });
+        })
 
         this.setState({
-            posts : pst
+            posts : pst,
+            deleted : "deleted"
         })
         localStorage.removeItem("posts");
         localStorage.setItem("posts",JSON.stringify(pst));
     }
-
 
     likePost(postId) {
         const pst = this.state.posts.map( (post) => {
@@ -120,22 +140,10 @@ class AppLifecycle extends React.Component{
           })
     }
 
-
-    componentDidUpdate(prevProps,prevState){
-        if(prevState.posts !== this.state.posts){
-            if(this.state.searchTxt === "all"){
-                this.setState({
-                    posts : this.state.allPosts
-                })
-            }
-        }
-    }
-
-
     render () {
         return (
             <div className="App">
-            <SearchBar searchPost={this.searchPost}/>
+            <SearchBar searchPost={this.searchPost} searchFusePost={this.searchFusePost}/>
             {/* Call Post Container for each data from dummyData */}
             {this.state.error && <h6 style={{marginTop : '100px'}}>{this.state.error}</h6>}
             {this.state.posts.map( (post) => {

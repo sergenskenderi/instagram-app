@@ -20,8 +20,7 @@ function CommentSection(props) {
   const [comments] = useState(props.comments)
   const classes = useStyles();
 
-  const deleteComment = (commentId,event) =>{
-    event.preventDefault();
+  const deleteComment = (commentId) =>{
     props.removeComment(commentId , props.postId);
   };
   return (
@@ -30,7 +29,7 @@ function CommentSection(props) {
          return <div key={comment.id} className={classes.root}>
         <h6>{comment.username}</h6>
         <p className={classes.txt}>{comment.text}</p>
-        <FaTrashAlt  onClick={(e) => deleteComment(comment.id,e)} style={ { color : 'grey' , marginTop : 'auto' , display : comment.username === "sergenskenderi" ? "" : "none"}}/>
+        <FaTrashAlt  onClick={() => deleteComment(comment.id)} style={ { color : 'grey' , marginTop : 'auto' , display : comment.username === "sergenskenderi" ? "" : "none"}}/>
         </div>
         })}
     </div>
