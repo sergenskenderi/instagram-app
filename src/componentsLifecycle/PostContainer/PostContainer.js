@@ -1,6 +1,6 @@
 import React from "react";
 import CommentSection from "../CommentSection/CommentSection";
-import {  Card } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import PostHeader from "./PostHeader";
 import PostLikeSection from "./PostLikeSection";
 import PostTimestamp from "./PostTimestamp";
@@ -10,7 +10,7 @@ import PropTypes from "prop-types";
 function PostContainer(props) {
   return (
     <div className="PostContainer">
-        <Card style={{ width: '40rem' , margin : 'auto', marginTop : '20px' , marginBottom : '10px' }}>
+        <Card style={{ width: '40rem' , margin : 'auto', marginTop : '1%' , marginBottom : '1%' , padding : '0' }}>
         <Card.Header><PostHeader image={props.post.thumbnailUrl} username={props.post.username} /></Card.Header>
         <Card.Img variant="top" src={props.post.imageUrl} />
         <PostLikeSection likes={props.post.likes} likePost={props.likePost} postId={props.post.id} liked={props.post.liked}/>

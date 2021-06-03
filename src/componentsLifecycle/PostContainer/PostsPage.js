@@ -65,7 +65,7 @@ class PostsPage extends React.Component{
     addNewComment(event,postId) { 
         const pst = this.state.posts.map( (post) => {
             if(post.id === postId){
-              const username = "sergenskenderi";
+              const username = localStorage.getItem("username");
               const id = post.comments[post.comments.length-1].id + 1;
               const newComment = {
                 id : id ,

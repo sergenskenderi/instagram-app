@@ -8,11 +8,17 @@ const useStyles = makeStyles((theme) => ({
       '& > *': {
         margin: theme.spacing(1),
       },
-      marginLeft : '5px'
+      marginLeft : '5px',
+      "@media (max-width: 600px)": {
+        marginLeft : '10px'
+      }
     },
     likes : {
       float : 'left',
-      marginLeft : '10px'
+      marginLeft : '10px',
+      "@media (max-width: 600px)": {
+        marginLeft : '20px'
+      }
     },
   }));
 

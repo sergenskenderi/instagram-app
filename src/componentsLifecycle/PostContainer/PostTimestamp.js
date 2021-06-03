@@ -10,7 +10,10 @@ const useStyles = makeStyles((theme) => ({
     },
     marginLeft : '7px',
     fontSize : 'small' ,
-    marginBottom : '10px'
+    marginBottom : '10px',
+    "@media (max-width: 600px)": {
+      marginLeft : '20px'
+    }
   },
   time : {
     fontSize : 'small' ,

@@ -8,7 +8,10 @@ const useStyles = makeStyles((theme) => ({
     '& > *': {
       margin: theme.spacing(0.5),
     },
-    marginLeft : '5px'
+    marginLeft : '5px' ,
+    "@media (max-width: 600px)": {
+      marginLeft : '17px'
+    }
   },
   txt: {
     marginTop : 'auto',
