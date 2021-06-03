@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
 function getRelativeTime(timestamp) {
   var currYear = moment().year();
   let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-  var currMonth = moment().month();
+  var currMonth = moment().month()+1;
   var currDay = moment().date();
   // get timestamp values
   var year = timestamp.split(" ")[2].split(",")[0];
